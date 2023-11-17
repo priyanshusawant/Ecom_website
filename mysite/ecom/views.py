@@ -11,7 +11,7 @@ def index(request):
         'itemlist':itemlist
     }
 
-    return render(request, 'ecom/index.html', context)
+    return render(request, 'ecom/home.html', context)
 
 def detail(request):
     return HttpResponse('<h1 style = "color : Orange">This is a details page</h1>')
