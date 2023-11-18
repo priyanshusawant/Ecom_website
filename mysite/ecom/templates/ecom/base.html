@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'app/images/logo.png' %}" width="90" height="70">
@@ -36,6 +36,7 @@
                 <li><a class="dropdown-item" href="#">Panner</a></li>
                 <li><a class="dropdown-item" href="#">Curd</a></li>
                 <li><a class="dropdown-item" href="#">Milkshakes</a></li>
+                <li><a class="dropdown-item" href="#">Butter</a></li>
                 <li><a class="dropdown-item" href="#">Cheese</a></li>
                 <li><a class="dropdown-item" href="#">Lassi</a></li>
                 <li><a class="dropdown-item" href="#">Ghee</a></li>
@@ -82,10 +83,10 @@
     </div>
     </nav>
 
-    {% block body %}
-    {% endblock %}
+    {% block banner-slides %} {% endblock banner-slides %}
+    {% block main-content %} {% endblock main-content %}
 
-    <footer class="container-fluid fixed-bottom bg-success text-center p-2 mt-5">
+    <footer class="container-fluid fixed-bottom bg-dark text-center text-white">
         Copyright &#169; : 2023 || Develop by : Priyanshu Sawant || All Right Reserved 
     </footer>
 
