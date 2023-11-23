@@ -2,6 +2,17 @@ from django.db import models
 
 # Create your models here.
 
+category_choices = (
+    ('CR','Curd'),
+    ('ML','Milk'),
+    ('PN','Paneer'),
+    ('MS','Milkshake'),
+    ('BT','Butter'),
+    ('CZ','Cheese'),
+    ('IC','Ice Creams'),
+    ('GH','Ghee'),
+    ('LS','Lassi'),
+)
 
 class Item(models.Model):
     prod_code = models.IntegerField(default=100)
@@ -16,6 +27,12 @@ class Item(models.Model):
         consequatur,nobis voluptatem incidunt laborum harum doloribus aspernatur iure aperiam adipisci quas alias ea delectus!'''
     )
     item_price = models.IntegerField()
+    category = models.CharField(choices=category_choices, max_length=2, null=True)
+    item_img = models.CharField(
+        max_length=500,
+        default="https://static.vecteezy.com/system/resources/previews/003/170/825/original/isolated-food-plate-fork-and-spoon-design-free-vector.jpg"
+    )
+
 
     def __str__(self):
         return self.item_name

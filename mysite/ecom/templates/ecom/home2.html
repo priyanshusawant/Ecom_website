@@ -1,0 +1,63 @@
+{% extends 'ecom/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block main-content-2 %}
+
+    <div style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xx-large; text-align: center;">
+        Dairy Products
+    </div>
+<br><br>
+    {% for item in itemlist %}
+
+        <div class="row mb-3">
+            <div class="col-md-3 offset-md-2">
+                <img 
+                src="{{ item.item_img }}"
+                class="card"
+                height="135px"
+                width="230px"
+                >
+            </div>
+
+            <div class="col-md-4">
+
+                <h3 style="font-size: 1.5rem;">
+                    {{ item.item_name }}
+                </h3>
+
+                <h5 style="font-style: italic; font-size: 1rem;">
+                    {{ item.item_desc | truncatewords:6 }}
+                </h5>
+
+                <h6>
+                    ${{ item.item_price }}
+                </h6>
+
+                <h6 style="font-style: italic;"> added for: xyz {{ item.for_user }}</h6>
+
+                <h6 style="font-style: italic;"> added by superuser: {{ item.user }} </h6>
+            </div>
+
+            <div class="col-md-12">
+                <a 
+                href="{% url 'ecom:detail' item.id %}" 
+                style="margin-left: 90%; width: 100px; "
+                class="btn btn-outline-success"
+            >
+                Details
+            </a>
+            </div>
+        </div>
+
+            
+    {% endfor %}
+    {% endblock main-content-2 %}
+</body>
+</html>

@@ -21,4 +21,9 @@ def detail(request, item_id):
         prod_ref = item.prod_code
     )
 
-    return render(request, "ecom/detail.html")
+    context = {
+        'item':item,
+        'hist':hist
+    }
+
+    return render(request, "ecom/detail.html", context)
