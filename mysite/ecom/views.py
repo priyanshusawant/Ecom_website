@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from ecom.models import Item
+from ecom.models import HISTORY
 
 # Create your views here.
 
@@ -13,5 +14,11 @@ def index(request):
 
     return render(request, 'ecom/home.html', context)
 
-def detail(request):
-    return HttpResponse('<h1 style = "color : Orange">This is a details page</h1>')
+def detail(request, item_id):
+    item = Item.objects.get(pk=item_id)
+
+    hist = HISTORY.objects.filter(
+        prod_ref = item.prod_code
+    )
+
+    return render(request, "ecom/detail.html")
