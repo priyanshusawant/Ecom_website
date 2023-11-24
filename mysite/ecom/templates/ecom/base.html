@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'ecom:index' %}">Home</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -32,15 +32,15 @@
                 Products
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Milk</a></li>
-                <li><a class="dropdown-item" href="#">Panner</a></li>
-                <li><a class="dropdown-item" href="#">Curd</a></li>
-                <li><a class="dropdown-item" href="#">Milkshakes</a></li>
-                <li><a class="dropdown-item" href="#">Butter</a></li>
-                <li><a class="dropdown-item" href="#">Cheese</a></li>
-                <li><a class="dropdown-item" href="#">Lassi</a></li>
-                <li><a class="dropdown-item" href="#">Ghee</a></li>
-                <li><a class="dropdown-item" href="#">Ice-Creams</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'ML' %}">Milk</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'PN' %}">Panner</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'CR' %}">Curd</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'MS' %}">Milkshakes</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'BT' %}">Butter</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'CZ' %}">Cheese</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'LS' %}">Lassi</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'GH' %}">Ghee</a></li>
+                <li><a class="dropdown-item" href="{% url 'ecom:category' 'IC' %}">Ice-Creams</a></li>
             </ul>
             </li>
 
@@ -88,6 +88,7 @@
     {% block main-content %} {% endblock main-content %}
     {% block main-content-2 %} {% endblock main-content-2 %} 
     {% block details %} {% endblock details %}
+    {% block category %} {% endblock category %}
 
     <footer class="container-fluid fixed-bottom bg-dark text-center text-white">
         Copyright &#169; : 2023 || Develop by : Priyanshu Sawant || All Right Reserved 

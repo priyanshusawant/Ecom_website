@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
 from ecom.models import Item
 from ecom.models import HISTORY
+
 
 # Create your views here.
 
@@ -27,3 +29,18 @@ def detail(request, item_id):
     }
 
     return render(request, "ecom/detail.html", context)
+
+#Category view
+
+def category(request, val):
+    
+    item = Item.objects.filter(
+        category = val
+    )
+
+    
+    context = {
+        'item':item
+    }
+    
+    return render(request, 'ecom/category.html', context)
