@@ -77,10 +77,28 @@
             </li>
 
             <li class="nav-item mx-2">
-                <a href="" class="nav-link text-white">Sign Up</a>
+                <a href="{% url 'register' %}" class="nav-link text-white">
+                    Sign Up
+                </a>
             </li>
         </ul>
 
+        <div>
+            {% if messages %}
+
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    
+        {% endif %}
+        </div>
+    
+    <!-- for spacing -->
+    <div class="mb-5">
+
+    </div>
                 
         </div>
     </div>
@@ -92,6 +110,7 @@
     {% block main-content-2 %} {% endblock main-content-2 %} 
     {% block details %} {% endblock details %}
     {% block category %} {% endblock category %}
+    {% block signup %} {% endblock signup %}
 
     <footer class="container-fluid fixed-bottom bg-dark text-center text-white">
         Copyright &#169; : 2023 || Develop by : Priyanshu Sawant || All Right Reserved 
