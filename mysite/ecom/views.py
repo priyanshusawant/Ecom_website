@@ -34,13 +34,21 @@ def detail(request, item_id):
 
 def category(request, val):
     
-    item = Item.objects.filter(
+    citem = Item.objects.filter(
         category = val
     )
-
     
     context = {
-        'item':item
+        'citem' : citem
     }
     
     return render(request, 'ecom/category.html', context)
+
+#About us & Contact us
+
+def about(request):
+    return render(request, 'ecom/about.html')
+
+def contact(request):
+    return render(request, 'ecom/contact.html')
+

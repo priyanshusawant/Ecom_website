@@ -45,12 +45,12 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="{% url 'ecom:about' %}">About Us</a>
             </li>
 
             
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{% url 'ecom:contact' %}">Contact</a>
             </li>
 
         </ul>
@@ -58,7 +58,7 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
-        </div>
+        
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown mx-2">
@@ -80,6 +80,9 @@
                 <a href="" class="nav-link text-white">Sign Up</a>
             </li>
         </ul>
+
+                
+        </div>
     </div>
     </nav>
 
