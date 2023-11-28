@@ -1,0 +1,33 @@
+{% extends 'ecom/base.html' %}
+
+{% block login %}
+
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-dark">
+                    <div class="offset-md-5" class="card-title">
+                        Login
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label class="offset-md-1" for="user">Username:</label><br>
+                        <input class="offset-md-1" type="text" id="user" name="username"><br>
+                    
+                        <label class="offset-md-1" for="pass">Password:</label><br>
+                        <input class="offset-md-1" type="password" id="pass" name="password"><br><br>
+                        
+                        <button class="btn btn-success btn-sm offset-md-5" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock login %}
+

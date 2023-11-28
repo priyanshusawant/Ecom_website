@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from users.forms import RegisterForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -27,3 +28,25 @@ def register(request):
         }
 
     return render(request, 'users/register.html', context)
+
+def login_view(request):
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('ecom:index')
+        
+    
+    return render(request, 'users/login.html')
+
+def logout_view(request):
+
+    if request.method == 'POST':
+        logout(request)
+        return redirect('food:index')
+
+    return render(request, 'users/logout.html')

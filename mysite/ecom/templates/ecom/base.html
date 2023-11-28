@@ -73,7 +73,7 @@
                 </ul>
             </li>
             <li class="nav-item mx-2">
-                <a href="" class="nav-link text-white">Login</a>
+                <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
             </li>
 
             <li class="nav-item mx-2">
@@ -111,6 +111,7 @@
     {% block details %} {% endblock details %}
     {% block category %} {% endblock category %}
     {% block signup %} {% endblock signup %}
+    {% block login %} {% endblock login %}
 
     <footer class="container-fluid fixed-bottom bg-dark text-center text-white">
         Copyright &#169; : 2023 || Develop by : Priyanshu Sawant || All Right Reserved 
