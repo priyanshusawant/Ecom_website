@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from ecom.models import Item
@@ -53,4 +53,29 @@ def about(request):
 
 def contact(request):
     return render(request, 'ecom/contact.html')
+
+#Delete item view
+
+def delete_item(request, id):
+    item = Item.objects.get(pk=id)
+
+    context = {
+        'item':item
+    }
+    
+    if request.method == 'POST':
+        item.delete()
+
+        Obj_History = HISTORY(
+            user_name = request.user.username,
+            prod_ref = item.prod_code,
+            item_name = item.item_name,
+            op_type = 'Deleted'
+        )
+        print(1)
+        Obj_History.save()
+
+        return redirect('ecom:index')
+
+    return render(request, 'ecom/item-delete.html', context)
 

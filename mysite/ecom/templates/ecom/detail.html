@@ -30,12 +30,21 @@
             </h3>
         </div>
         
-        <div class="col-md-3 offset-md-1"></div>
+        <div class="col-md-3 offset-md-1">
+            
+            <a  href="#" style="width: 80px;" class="btn btn-warning">Edit</a>
+
+            <a href="{% url 'ecom:delete_item' item.id %}" style="width: 80px;" class="btn btn-danger">Delete</a>
+
+            <a href="{% url 'ecom:index' %}" style="width: 80px;" class="btn btn-success">Back</a>
+        </div>
+        
     </div>
 
     <div class="d-grid gap-2 col-3 mx-auto">
         <a href="#" class="btn btn-dark" type="button" >Add to Cart </a>
         <a href="#" class="btn btn-secondary" type="button">Buy Now</a>
     </div>
+    
 
     {% endblock details %}
