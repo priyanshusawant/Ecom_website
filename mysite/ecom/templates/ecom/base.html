@@ -22,6 +22,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'ecom:index' %}">Home</a>
@@ -54,6 +57,7 @@
             </li>
 
         </ul>
+
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark" type="submit">Search</button>
@@ -65,13 +69,21 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Settings
                 </a>
+
+
+
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Orders</a></li>
                     <li><a class="dropdown-item" href="#">Change Password</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
             </li>
+
+            <li class="nav-item mx-2">
+                <a href="{% url 'logout' %}" class="nav-link text-white">Logout</a>
+            </li>
+
+
             <li class="nav-item mx-2">
                 <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
             </li>
@@ -80,26 +92,27 @@
                 <a href="{% url 'register' %}" class="nav-link text-white">
                     Sign Up
                 </a>
+
+
             </li>
+            
         </ul>
 
         <div>
-            {% if messages %}
+        
+    {% if messages %}
 
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
     
-        {% endif %}
+    {% endif %}
         </div>
     
     <!-- for spacing -->
-    <div class="mb-5">
-
-    </div>
-                
+    <div class="mb-5"></div>
         </div>
     </div>
     </nav>
@@ -112,6 +125,7 @@
     {% block category %} {% endblock category %}
     {% block signup %} {% endblock signup %}
     {% block login %} {% endblock login %}
+    {% block profile %} {% endblock profile %}
 
     <footer class="container-fluid fixed-bottom bg-dark text-center text-white">
         Copyright &#169; : 2023 || Develop by : Priyanshu Sawant || All Right Reserved 

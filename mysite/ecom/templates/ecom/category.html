@@ -2,28 +2,41 @@
 {% load static %}
 
     {% block category %}
-    <div style="margin-top: 3%;" class="row">
-        <div class="col-md-2 offset-md-1">
-            <img height="150px" width="250px" class="card" src="{{ item.item_img }}">
+
+    <br><br>
+
+        {% for obj in citem %}
+
+        <div class="row mb-3">
+            <a class="col-md-3 offset-md-2 ">
+                <img
+                src="{{ obj.item_img }}"
+                class="card"
+                height="135px"
+                width="230px"
+                >
+            </a>
+
+            <div class="col-md-4">
+
+                <h3 style="font-size: 1.5rem;">
+                    {{ obj.item_name }}
+                </h3>
+
+                <h5 style="font-style: italic; font-size: 1rem;">
+                    {{ obj.item_desc | truncatewords:20 }}
+                </h5>
+
+                <h6>
+                    ${{ obj.item_price }}
+                </h6>
+
+                <a href="#">
+                    <button type="button" class="btn btn-outline-success">Detail</button>
+                </a>
+            </div>
         </div>
 
-        <div class="col-md-4 offset-md-1">
-
-            <h1 style="font-style: italic;">
-                {{ item.item_name }}
-                Hello
-            </h1>
-
-            <h2 style="font-style: italic; font-size: 1.3rem; text-align: justify;">
-                {{ item.item_desc }}
-            </h2>
-
-            <h3 style="font-style: italic;">
-                ${{ item.item_price }}
-            </h3>
-        </div>
-        
-        <div class="col-md-3 offset-md-1"></div>
-    </div>
+        {% endfor %}
 
     {% endblock category%}

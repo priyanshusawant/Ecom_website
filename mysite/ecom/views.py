@@ -16,6 +16,8 @@ def index(request):
 
     return render(request, 'ecom/home.html', context)
 
+# Detail view
+
 def detail(request, item_id):
     item = Item.objects.get(pk=item_id)
 
@@ -33,7 +35,7 @@ def detail(request, item_id):
 #Category view
 
 def category(request, val):
-    
+    print(val)
     citem = Item.objects.filter(
         category = val
     )
