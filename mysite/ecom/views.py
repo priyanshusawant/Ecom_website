@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from ecom.models import Item
+from ecom.forms import ItemForm
 from ecom.models import HISTORY
 
 
@@ -78,4 +79,30 @@ def delete_item(request, id):
         return redirect('ecom:index')
 
     return render(request, 'ecom/item-delete.html', context)
+
+#Update Item View
+
+def update_item(request, id):
+    item = Item.objects.get(pk=id)
+    form = ItemForm(request.POST or None, instance=item)
+
+    context = {
+        'form':form
+    }
+
+    if form.is_valid():
+        form.save()
+
+        Obj_History = HISTORY(
+            user_name = request.user.username,
+            prod_ref = form.instance.prod_code,
+            item_name = request.POST.get('item_name'), #form.instance.item_name
+            op_type = 'Updated'
+        )
+        print(1)
+        Obj_History.save()
+
+        return redirect('ecom:index')
+
+    return render(request, 'ecom/item-form.html', context)
 

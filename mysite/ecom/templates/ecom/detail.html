@@ -32,7 +32,7 @@
         
         <div class="col-md-3 offset-md-1">
             
-            <a  href="#" style="width: 80px;" class="btn btn-warning">Edit</a>
+            <a  href="{% url 'ecom:update_item' item.id %}" style="width: 80px;" class="btn btn-warning">Edit</a>
 
             <a href="{% url 'ecom:delete_item' item.id %}" style="width: 80px;" class="btn btn-danger">Delete</a>
 
