@@ -37,12 +37,12 @@ def detail(request, item_id):
 
 def category(request, val):
     print(val)
-    citem = Item.objects.filter(
+    items = Item.objects.filter(
         category = val
     )
     
     context = {
-        'citem' : citem
+        'items' : items
     }
     
     return render(request, 'ecom/category.html', context)

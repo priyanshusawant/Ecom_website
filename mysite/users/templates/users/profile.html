@@ -5,26 +5,31 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <div class="card">
                 <div class="card-header text-white bg-info">
                     <div class="offset-md-5" class="card-title">
                         Profile
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div>
-                            <img style="margin-bottom: 15px;" height="100px" width="100px" src="{{ user.profile.image.url }}">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="" class="img-fluid rounded-start" >
                         </div>
-                        <div style="margin-top: 20px;" class="offset-md-2">
-                            <span>{{ user.first_name }}</span>
-                            <span>{{ user.last_name }}</span><br>
-                            <span>{{ user.email }}</span> 
-                            <p>{{ user.profile.locations }}</p>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">Card title</h5> -->
+
+                                <div style="margin-top: 20px;" class="offset-md-2">
+                                    <span>{{ user.first_name }}</span>
+                                    <span>{{ user.last_name }}</span><br>
+                                    <span>{{ user.email }}</span> 
+                                    <p>{{ user.profile.locations }}</p>
+                                </div>
+
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

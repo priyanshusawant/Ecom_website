@@ -5,7 +5,7 @@
 
     <br><br>
 
-        {% for obj in citem %}
+        {% for obj in items %}
 
         <div class="row mb-3">
             <a class="col-md-3 offset-md-2 ">
@@ -31,7 +31,7 @@
                     ${{ obj.item_price }}
                 </h6>
 
-                <a href="#">
+                <a href="{% url 'ecom:detail' obj.id %}">
                     <button type="button" class="btn btn-outline-success">Detail</button>
                 </a>
             </div>
