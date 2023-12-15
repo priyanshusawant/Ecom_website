@@ -4,6 +4,7 @@ from django.views import View
 from ecom.models import Cart, Item
 from ecom.forms import ItemForm
 from ecom.models import HISTORY
+from django.views.generic.list import ListView
 
 
 # Create your views here.
@@ -16,6 +17,13 @@ def index(request):
     }
 
     return render(request, 'ecom/home.html', context)
+
+
+class IndexClassView(ListView):
+
+    model = Item
+    context_object_name = 'itemlist'
+    template_name = 'ecom/home.html'
 
 # Detail view
 

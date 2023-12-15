@@ -4,7 +4,15 @@ from ecom import views
 app_name = 'ecom'
 
 urlpatterns = [
-    path('home/', views.index, name='index'),
+
+# function based index view
+# -------------------------------------------------------------------------------------------------------------------------------------
+    # path('home/', views.index, name='index'),
+
+# class based index view
+# -------------------------------------------------------------------------------------------------------------------------------------
+    path('home/', views.IndexClassView.as_view(), name='index'),
+
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('detail/<int:item_id>/', views.detail, name='detail'),

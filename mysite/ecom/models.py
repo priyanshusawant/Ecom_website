@@ -16,6 +16,11 @@ category_choices = (
 )
 
 class Item(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        default = '1'
+    )
     prod_code = models.IntegerField(default=100)
     for_user = models.CharField(
         max_length=100,
