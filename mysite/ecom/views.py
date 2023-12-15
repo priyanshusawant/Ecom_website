@@ -5,6 +5,9 @@ from ecom.models import Cart, Item
 from ecom.forms import ItemForm
 from ecom.models import HISTORY
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -40,6 +43,42 @@ def detail(request, item_id):
     }
 
     return render(request, "ecom/detail.html", context)
+
+
+class EcomDetail(DetailView):
+
+    model = Item
+    context_object_name = 'item'
+    template_name = 'ecom/detail.html'
+
+#Create Item Views
+    
+
+def create_item(request):
+    form = ItemForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('ecom:home')
+
+    context = {
+        'form':form
+    }
+
+    return render(request, 'ecom/item-form.html', context)
+
+
+
+class CreateItem(CreateView):
+
+    model = Item
+    fields = ['prod_code', 'for_user', 'item_name', 'item_desc', 'item_price', 'item_img']
+    template_name = 'ecom/item-form.html'
+    success_url = reverse_lazy('ecom:home')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 #Category view
 
