@@ -11,4 +11,6 @@ urlpatterns = [
     path('category/<str:val>/',views.category, name="category"),
     path('delete/<int:id>/', views.delete_item, name='delete_item'),
     path('update/<int:id>/',views.update_item, name='update_item'),
+    path('add-to-cart/', views.add_to_cart, name='addtocart'),
+#     path('cart/', views.show_cart, name='showcart'),
 ]

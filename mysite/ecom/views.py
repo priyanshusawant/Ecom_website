@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
-from ecom.models import Item
+from ecom.models import Cart, Item
 from ecom.forms import ItemForm
 from ecom.models import HISTORY
 
@@ -106,3 +106,15 @@ def update_item(request, id):
 
     return render(request, 'ecom/item-form.html', context)
 
+#Add-to-Cart
+
+def add_to_cart(request):
+    user = request.user_name
+    prod_code = request.GET.get('prod_code')
+    product = Item.objects.get(id=prod_code)
+    Cart(user=user, product=Item).save()
+
+    return redirect('/cart')
+
+def show_cart(request):
+    return render(request, 'ecom/addtocart.html')
