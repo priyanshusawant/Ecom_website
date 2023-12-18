@@ -8,7 +8,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-
+from users.models import CusOrders
 
 # Create your views here.
 
@@ -48,9 +48,21 @@ def detail(request, item_id):
         prod_ref = item.prod_code
     )
 
+    if request.user.profile.user_type == 'Rest' or request.user.profile.user_type == 'Admin':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code
+        )
+
+    elif request.user.profile.user_type == 'Cust':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code,
+            user = request.user.username
+        )
+
     context = {
         'item':item,
-        'hist':hist
+        'hist':hist,
+        'oco':Obj_CusOrd
     }
 
     return render(request, "ecom/detail.html", context)

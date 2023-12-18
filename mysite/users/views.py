@@ -86,13 +86,13 @@ def orders(request, id, pdcd, user):
 
     if request.method == 'POST':
 
-        obj_CusOrds = CusOrders(
+        Obj_CusOrd = CusOrders(
             prod_code = pdcd,
             user = user,
             quantity = request.POSt.get('qty')
         )
 
-        obj_CusOrds.save()
+        Obj_CusOrd.save()
 
         return redirect('ecom:detail', item_id = id)
     return render(request, 'users/orders.html', context)
