@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
-from ecom.models import Cart, Item
+from ecom.models import Cart, Item, HISTORY
 from ecom.forms import ItemForm
 from ecom.models import HISTORY
 from django.views.generic.list import ListView
@@ -78,8 +78,6 @@ def create_item(request):
 
     return render(request, 'ecom/item-form.html', context)
 
-
-
 class CreateItem(CreateView):
 
     model = Item
@@ -89,6 +87,14 @@ class CreateItem(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        Obj_History = HISTORY(
+            user_name = self.request.user.username,
+            prod_ref = form.instance.prod_code,
+            item_name = self.request.POST.get('item_name'), 
+            op_type = 'Created'
+        )
+        print(1)
+        Obj_History.save()
         return super().form_valid(form)
 
 #Category view
@@ -137,7 +143,6 @@ def delete_item(request, id):
     }
     
     if request.method == 'POST':
-        item.delete()
 
         Obj_History = HISTORY(
             user_name = request.user.username,
@@ -145,9 +150,10 @@ def delete_item(request, id):
             item_name = item.item_name,
             op_type = 'Deleted'
         )
-        print(1)
+
         Obj_History.save()
 
+        item.delete()
         return redirect('ecom:index')
 
     return render(request, 'ecom/item-delete.html', context)

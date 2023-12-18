@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<body>
     {% block details %}
 
     <div style="margin-top: 3%;" class="row">
@@ -31,20 +31,79 @@
         </div>
         
         <div class="col-md-3 offset-md-1">
+
+            {% if user.is_superuser %}
             
-            <a  href="{% url 'ecom:update_item' item.id %}" style="width: 80px;" class="btn btn-warning">Edit</a>
+                <a  href="{% url 'ecom:update_item' item.id %}" style="width: 80px;" class="btn btn-warning">Edit</a>
 
-            <a href="{% url 'ecom:delete_item' item.id %}" style="width: 80px;" class="btn btn-danger">Delete</a>
+                <a href="{% url 'ecom:delete_item' item.id %}" style="width: 80px;" class="btn btn-danger">Delete</a>
 
-            <a href="{% url 'ecom:index' %}" style="width: 80px;" class="btn btn-success">Back</a>
+                <a href="{% url 'ecom:index' %}" style="width: 80px;" class="btn btn-success">Back</a>
+            
+            {% elif user.is_authenticated and user.profile.user_type == 'Rest' %}
+
+                <a  href="{% url 'ecom:update_item' item.id %}" style="width: 80px;" class="btn btn-warning">Edit</a>
+
+                <a href="{% url 'ecom:index' %}" style="width: 80px;" class="btn btn-success">Back</a>
+
+            {% elif user.is_authenticated and user.profile.user_type == 'Cust' %}
+
+                <a  href="#" 
+                style="width: 80px;" 
+                class="btn btn-warning">Order</a>
+
+                <a href="{% url 'ecom:index' %}" style="width: 80px;" class="btn btn-success">Back</a>
+
+            {% endif %}
+
         </div>
         
     </div>
 
-    <div class="d-grid gap-2 col-3 mx-auto">
-        <a href="#" class="btn btn-dark" type="button" >Add to Cart </a>
-        <a href="#" class="btn btn-secondary" type="button">Buy Now</a>
-    </div>
-    
+    {% if user.is_authenticated %}
 
+        {% if user.is.profile.user_type == 'Rest' or user.is.profile.user_type == 'Admin' %}
+
+    {% for obj in hist %}
+
+    <div class="row mb-1">
+
+        <div class="col-md-8
+                    offset-md-2
+                    bg-danger
+                    text-white">
+
+                    <div class="row">
+                        <div class="col-md-3 text-left">
+                            {{ obj.user_name }}
+                        </div>
+
+                        <div class="col-md-3 text-left">
+                            {{ obj.prod_ref }}
+                        </div>
+
+                        <div class="col-md-3 text-left">
+                            {{ obj.item_name }}
+                        </div>
+
+                        <div class="col-md-3 text-left">
+                            {{ obj.op_type }}
+                        </div>
+
+                    </div>
+        </div>
+
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    {% endfor %}
+
+        {% endif %}
+
+    {% endif %}
+
+    
     {% endblock details %}
+</body>
+</html>

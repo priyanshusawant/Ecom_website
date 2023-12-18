@@ -94,13 +94,17 @@
             </div>
 
             <div class="col-md-12">
-                <a 
-                href="{% url 'ecom:detail' item.id %}" 
-                style="margin-left: 90%; width: 100px; "
-                class="btn btn-outline-success"
-            >
-                Details
-            </a>
+
+                {% if user.is_authenticated %}
+
+                    <a 
+                        href="{% url 'ecom:detail' item.id %}" 
+                        style="margin-left: 90%; width: 100px; "
+                        class="btn btn-outline-success"
+                    >
+                    Details
+                    </a>
+                {% endif %}
             </div>
             
         </div>

@@ -16,9 +16,9 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
 
-    #path('detail/<int:item_id>/', views.detail, name='detail'),
+    path('detail/<int:item_id>/', views.detail, name='detail'),
 
-    path('detail/<int:pk>/', views.EcomDetail.as_view(), name='detail'),
+    # path('detail/<int:pk>/', views.EcomDetail.as_view(), name='detail'),
 
     # function based create item view
 # -------------------------------------------------------------------------------------------------------------------------------------
