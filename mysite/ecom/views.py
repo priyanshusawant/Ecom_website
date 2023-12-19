@@ -9,6 +9,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from users.models import CusOrders, CusRatingFeedback
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -17,14 +18,35 @@ def index(request):
     if request.user.is_superuser:
         itemlist = Item.objects.all()
 
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains=item_name)
+
+        # for pagination
+        paginator = Paginator(itemlist, 3)
+        page = request.GET.get('page')
+        itemlist = paginator.get_page(page)
+
     elif request.user.is_authenticated and request.user.profile.user_type == 'Rest':
         itemlist = Item.objects.filter(for_user= request.user.username)
+
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains=item_name)
 
     elif request.user.is_authenticated and request.user.profile.user_type == 'Cust':
         itemlist = Item.objects.all()
 
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains=item_name)
+
     else:
         itemlist = Item.objects.all()
+
+        item_name = request.GET.get('item_name')
+        if item_name != '' and item_name is not None:
+            itemlist = Item.objects.filter(item_name__icontains=item_name)
 
     context = {
         'itemlist':itemlist
@@ -213,3 +235,11 @@ def add_to_cart(request):
 
 def show_cart(request):
     return render(request, 'ecom/addtocart.html')
+
+def NavForm(request):
+
+    path = request.GET.get('item_name')
+    nfd = request.GET.get('navformdata')
+    print(nfd)
+
+    return redirect(str(path))

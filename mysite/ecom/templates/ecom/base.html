@@ -50,10 +50,12 @@
 
         </ul>
 
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark" type="submit">Search</button>
-        </form>
+        </form> -->
+
+
         
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -108,10 +110,26 @@
 
         </ul>
 
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="{% url 'ecom:index' %}" method="GET" class="d-flex" role="search">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" name="item_name" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
+
+        <form action="{% url 'ecom:navform' %}" method="GET">
+            {% csrf_token %}
+            <span><b style="color:white">Form: </b></span>
+            <input type="text" name="navformdata">
+            <input hidden type="text" name="item_name" value="{{ request.path }}">
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- <form action="{% url 'ecom:index' %}" method="GET">
+            {% csrf_token %}
+            <span><b style="color:white">Search: </b></span>
+            <input type="search" name="item_name">
+            <button type="submit">Search</button>
+        </form> -->
         
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
