@@ -1,0 +1,11 @@
+{% extends 'ecom/base.html' %}
+
+{% block pymt_succ %}
+
+<h1>This is the payment success page</h1>
+
+<a href="{% url 'ecom:index' %}" class="btn btn-dark">
+    Back to Home
+</a>
+
+{% endblock pymt_succ %}

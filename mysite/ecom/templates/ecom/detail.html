@@ -144,7 +144,7 @@
                         <div class="col-md-2 text-left">
                             {% if user.profile.user_type == 'Cust' %}
                                 <a class="btn btn-primary btn-sm"
-                                href="#">
+                                href="{% url 'users:buy' item.item_price obj.quantity %}">
                                     Buy Now
                                 </a>
                             {% endif %}
@@ -232,10 +232,6 @@
         {% endfor %}
 
     {% endif %}
-
-
-
-
 
     {% endif %}
 
