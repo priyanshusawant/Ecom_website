@@ -1,0 +1,13 @@
+{% extends 'ecom/base.html' %}
+
+{% block crf_upd %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">
+        Confirm
+    </button>
+</form>
+
+{% endblock crf_upd %}

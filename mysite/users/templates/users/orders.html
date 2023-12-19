@@ -1,6 +1,6 @@
-{% extends 'food/base.html' %}
+{% extends 'ecom/base.html' %}
 
-{% block body %}
+{% block order %}
 
 <form method="POST">
     {% csrf_token %}
@@ -16,4 +16,4 @@
     </button>
 </form>
 
-{% endblock %}
+{% endblock order %}
