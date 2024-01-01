@@ -109,7 +109,9 @@
             
         </div>
 
-            
+    
+
+
     {% endfor %}
 
     <!-- {% if itemlist.has_previous %}
@@ -138,27 +140,27 @@
 
     {% endif %} -->
 
+
     <div class="paginator">
         <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {% if itemlist.has_previous %}
+            <ul class="pagination justify-content-center">
+                {% if itemlist.has_previous %}
                 <a href="?page={{ itemlist.previous_page_number }}" class="page-link">
                     Previous
                 </a>
-            {% endif %}
-
-            Page : {{ itemlist.number }} of {{ itemlist.paginator.num_pages }}
-
-            {% if itemlist.has_next %}
+                {% endif %}
+                
+                Page : {{ itemlist.number }} of {{ itemlist.paginator.num_pages }}
+                
+                {% if itemlist.has_next %}
                 <a class="page-link" href="?page={{ itemlist.next_page_number }}">
                     Next
                 </a>
-            {% endif %}
-
-
-        </ul>
+                {% endif %}
+            </ul>
         </nav>
-</div>
+    </div>
+    
     {% endblock main-content %}
 </body>
 </html>
