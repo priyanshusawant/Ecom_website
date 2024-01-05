@@ -94,14 +94,15 @@ def detail(request, item_id):
             user = request.user.username
         )
 
-        crf = CusRatingFeedback.objects.filter(
-            prod_code = item.prod_code
-        )
+    crf = CusRatingFeedback.objects.filter(
+        prod_code = item.prod_code
+    )
 
     context = {
         'item':item,
         'hist':hist,
         'oco':Obj_CusOrd,
+        'crf':crf
     }
 
     return render(request, "ecom/detail.html", context)

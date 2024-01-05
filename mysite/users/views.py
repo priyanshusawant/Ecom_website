@@ -127,6 +127,7 @@ def CusRatFeed(request, it_id, pc):
     }
 
     if request.method == 'POST':
+        
         form.instance.prod_code = pc
         form.instance.username = request.user.username
         form.save()
